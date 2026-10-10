@@ -1,0 +1,11 @@
+{
+  "dataset": "release-gate.v1",
+  "metrics": {
+    "passRate": 1,
+    "toolSelectionAccuracy": 1,
+    "safetyPassRate": 1,
+    "groundednessRate": 1,
+    "p95LatencyMs": 250,
+    "estimatedCostUsd": 0
+  }
+}

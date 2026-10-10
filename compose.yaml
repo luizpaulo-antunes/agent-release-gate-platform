@@ -1,0 +1,20 @@
+services:
+  app:
+    build: .
+    environment:
+      PORT: 3000
+      OTEL_ENABLED: "true"
+      OTEL_SERVICE_NAME: agent-release-gate-platform
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4318/v1/traces
+    ports:
+      - "3000:3000"
+    depends_on:
+      - jaeger
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.60
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true"
+    ports:
+      - "16686:16686"
+      - "4318:4318"

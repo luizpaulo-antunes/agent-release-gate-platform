@@ -1,0 +1,38 @@
+{
+  "name": "agent-release-gate-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A production-minded quality gate for RAG agents and MCP tools.",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "node --import tsx --watch src/index.ts",
+    "start": "node dist/index.js",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "eval": "node --import tsx src/evaluation/run.ts",
+    "quality:gate": "node --import tsx src/evaluation/run.ts --gate",
+    "check": "npm run typecheck && npm test && npm run quality:gate"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.1",
+    "@opentelemetry/api": "1.9.1",
+    "@opentelemetry/exporter-trace-otlp-http": "0.223.0",
+    "@opentelemetry/resources": "2.12.0",
+    "@opentelemetry/sdk-node": "0.223.0",
+    "ajv": "8.20.0",
+    "express": "5.3.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@types/express": "5.0.6",
+    "@types/node": "^24.10.0",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vitest": "5.0.3"
+  }
+}
